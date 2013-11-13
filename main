@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
+
+def quad(a,b,c):
+	"""runs the quadradic formula faster than a snail\n the a,b,c come from 0 = ax^2 + bx + c"""
+	x1 = (-b + ((b**2) - (4 * a * c))**.5)/(2 * a)
+	x2 = (-b - ((b**2) - (4 * a * c))**.5)/(2 * a)
+	print "your solutions are " + str(x1) + " and " + str(x2)
+
 def factor(num):
+	"""Easy factoring of numbers not made to be a key breaker"""
 	import math
 	l = []
 	if (num%2 == 0):
@@ -24,3 +32,70 @@ def factor(num):
 				break
 			i += 2
 	return l
+
+def linear(xi_list,yi_list):
+	"""this function does easy sums to help simplify work \ninput x-points in a list and y-points in a list"""
+	if (len(xi_list) == len(yi_list)):
+		m,r2 = 0,0
+		xsum = sum(xi_list)
+		x2sum = sum(map(lambda x,y: x*y,xi_list,xi_list))
+		xysum = sum(map(lambda x,y: x*y,xi_list,yi_list))
+		ysum = sum(yi_list)
+		y2sum = sum(map(lambda x,y: x*y,yi_list,yi_list))
+		m = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))))
+		b = float((float(ysum) - (float(m) * float(xsum)))/(len(xi_list)))
+		r2 = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))**.5) * (((len(xi_list) * float(y2sum)) - (float(ysum) * float(ysum)))**.5)))**2)
+		print " "
+		print "sum of Xi = " + str(xsum) + "\nsum of Yi = " + str(ysum) + "\nsum of XiYi = " + str(xysum) + "\nsum of X2i = " + str(x2sum) + "\nsum of Y2i = " + str(y2sum)
+		print " m = " + str(m)
+		print " b = " + str(b)
+		print " r2 = " + str(r2)
+		print " r = " + str((float(r2))**.5)
+		print "y = (" + str(m) + ")x + (" + str(b) + ")"
+	else:
+		print "there was an unequal number of list elements in x list and the y list"
+
+def data(list):
+	"""This is for large statisical data gathering through one input list"""
+	import math
+	list.sort()
+	total,v = sum(list),0
+	mean = (float(total)/len(list))
+	for i in xrange(0,len(list)):
+		v += ((list[i] - mean)**2)
+	p = (v/len(list))
+	pdev = (p**.5)#population
+	s = (v/(len(list)-1))
+	sdev = (s**.5)#sample
+	#median subroutine
+	if (float(len(list))/2 == (len(list)/2)):
+		med1 = list[int(math.floor(float(len(list))/2))]
+		med2 = list[int(math.floor(float(len(list))/2)-1)]
+		med = ((float(med1) + float(med2))/2)
+	else:
+		med = list[int(math.floor(float(len(list))/2))]
+	#quartiles
+	if (float(len(list))/4 == (len(list)/4)):
+		q__1 = list[int(math.floor(float(len(list))/4))]
+		q__2 = list[int(math.floor(float(len(list))/4)-1)]
+		q1 = ((float(q__1) + float(q__2))/2)
+		q__3 = list[int(math.floor((float(len(list))*float(3))/4))]
+		q__4 = list[int(math.floor((float(len(list))*float(3))/4)-1)]
+		q3 = ((float(q__3) + float(q__4))/2)
+	else:
+		q1 = list[int(math.floor(float(len(list))/4))]
+		q3 = list[int(math.floor((float(len(list))*3)/4))]
+	iqr = (float(q3) - float(q1))
+	upper = (float(q3) + (1.5 * iqr))
+	lower = (float(q1) - (1.5 * iqr))
+	print "\nmean(" + chr(230) + ") = " + str(mean)
+	print "median = " + str(med)
+	print "total = " + str(total)
+	print "population " + chr(229) + " = " + str(pdev)
+	print "standard deviation = " + str(sdev)
+	print "Q1 = " + str(q1)
+	print "Q3 = " + str(q3)
+	print "Upper outlier = " + str(upper)
+	print "Lower Outlier = " + str(lower)
+	print "max = " + str(max(list))
+	print "min = " + str(min(list))
