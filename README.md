@@ -7,3 +7,4 @@ Classical code attempts
 
 * The two ideas for these scripts and functions was to help me with school 
 work that could be drastically simplified with a bit of tuned code.
+* Also these python fucntions are meant to be pretty plain implementations to help anyone with simple tools.
