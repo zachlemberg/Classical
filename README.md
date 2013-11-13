@@ -1,4 +1,4 @@
-Factoring
+Classical code attempts
 =========
 
 * my attempt at contributing code, not useful for legitamite useful but useful none the less.
