@@ -8,7 +8,7 @@ def quad(a,b,c):
 	print "your solutions are " + str(x1) + " and " + str(x2)
 
 def factor(num):
-	"""Easy factoring of numbers not made to be a key breaker"""
+	"""Easy factoring of numbers, not made to be a key breaker"""
 	import math
 	l = []
 	if (num%2 == 0):
@@ -17,7 +17,7 @@ def factor(num):
 			if (math.floor(num/float(i)) == (num/float(i))):
 				if ((i * (num/i)) == num):
 					l.append(str(i) + "*" + str(num/i))
-					break
+					#break right here will give only the first factors for num(even)
 			if ((i-1) > (num/i)):
 				break
 			i += 1
@@ -27,18 +27,18 @@ def factor(num):
 			if (math.floor(num/float(i)) == (num/float(i))):
 				if ((i * (num/i)) == num):
 					l.append(str(i) + "*" + str(num/i))
-					break
+					#break right here will give only the first factors for num(odd)
 			if ((i-1) > (num/i)):
 				break
 			i += 2
 	return l
 
-def linear(xi_list,yi_list):
-	"""this function does easy sums to help simplify work \ninput x-points in a list and y-points in a list"""
+def linear_regression(xi_list,yi_list):
+	"""this function does easy sums to help simplify work for linear regression\ninput x-points in a list and y-points in a list"""
 	if (len(xi_list) == len(yi_list)):
 		m,r2 = 0,0
 		xsum = sum(xi_list)
-		x2sum = sum(map(lambda x,y: x*y,xi_list,xi_list))
+		x2sum = sum(map(lambda x,y: x*y,xi_list,xi_list))# lambdas are not very efficient for this purpose
 		xysum = sum(map(lambda x,y: x*y,xi_list,yi_list))
 		ysum = sum(yi_list)
 		y2sum = sum(map(lambda x,y: x*y,yi_list,yi_list))
