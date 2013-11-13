@@ -1,7 +1,7 @@
 Factoring
 =========
 
-* my attempt at factoring numbers, not useful for legitamite useful but useful none the less.
+* my attempt at contributing code, not useful for legitamite useful but useful none the less.
 
 =========
 
