@@ -3,6 +3,13 @@ Classical code attempts
 
 * my attempt at contributing code, not useful for legitamite useful but useful none the less.
 
+main implementations are:
+
+- factoring numbers
+- linear regression
+- statisics data analysis
+- simple quadratic equation plugger
+
 =========
 
 * The two ideas for these scripts and functions was to help me with school 
