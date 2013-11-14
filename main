@@ -97,3 +97,24 @@ def data(list):
 	print "Lower Outlier = " + str(lower)
 	print "max = " + str(max(list))
 	print "min = " + str(min(list))
+
+def primes(start,stop):
+	"""finds prime numbers between start and stop, start should be atleast 2"""
+	i,p = start,3
+	while (i <= stop):
+		j,w,m = 2,0,1
+		while (j < (i-1)):
+			if (i%j == 0):
+				w += 1
+				break
+			if (m == 0):	j += 2
+			else:	j += 1
+		if (w == 0):	print str(i),
+		if (p == 0):
+			if (i%10 == 3):
+				i += 4
+			else:
+				i += 2
+		else:
+			i += 1
+			p -= 1
