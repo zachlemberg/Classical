@@ -14,20 +14,18 @@ def factor(num):
 	if (num%2 == 0):
 		i = 2
 		while(i <= num/2):
-			if (math.floor(num/float(i)) == (num/float(i))):
-				if ((i * (num/i)) == num):
-					l.append(str(i) + "*" + str(num/i))
-					#break right here will give only the first factors for num(even)
+			if (num%i == 0):
+				l.append(str(i) + "*" + str(num/i))
+				#break right here will give only the first factors for num(even)
 			if ((i-1) > (num/i)):
 				break
 			i += 1
 	else:
 		i = 3
 		while(i <= num/2):
-			if (math.floor(num/float(i)) == (num/float(i))):
-				if ((i * (num/i)) == num):
-					l.append(str(i) + "*" + str(num/i))
-					#break right here will give only the first factors for num(odd)
+			if (num%i == 0):
+				l.append(str(i) + "*" + str(num/i))
+				#break right here will give only the first factors for num(odd)
 			if ((i-1) > (num/i)):
 				break
 			i += 2
