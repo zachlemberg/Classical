@@ -53,6 +53,52 @@ def linear_regression(xi_list,yi_list):
 	else:
 		print "there was an unequal number of list elements in x list and the y list"
 
+def exponential_regression(xi_list,yi_list):
+	"""this function get a exponential line\ninput x-points in a list and y-points in a list"""
+	import math
+	if (len(xi_list) == len(yi_list)):
+		m,r2 = 0,0
+		xsum = sum(xi_list)
+		x2sum = sum(map(lambda x: x**2,xi_list))
+		xysum = sum(map(lambda x,y: x*math.log(y),xi_list,yi_list))
+		ysum = sum(map(lambda y: math.log(y),yi_list))
+		y2sum = sum(map(lambda y: math.log(y)**2,yi_list))
+		m = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))))
+		b = float((float(ysum) - (float(m) * float(xsum)))/(len(xi_list)))
+		r2 = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))**.5) * (((len(xi_list) * float(y2sum)) - (float(ysum) * float(ysum)))**.5)))**2)
+		print " "
+		print "sum of Xi = " + str(xsum) + "\nsum of Yi = " + str(ysum) + "\nsum of XiYi = " + str(xysum) + "\nsum of X2i = " + str(x2sum) + "\nsum of Y2i = " + str(y2sum)
+		print " m = " + str(m)
+		print " b = " + str(math.exp(b))
+		print " r2 = " + str(r2)
+		print " r = " + str((float(r2))**.5)
+		print "y = " + str(math.exp(b)) + "e^(" + str(m) + "(x)"
+	else:
+		print "there was an unequal number of list elements in x list and the y list"
+
+def power_regression(xi_list,yi_list):
+	"""this function get the power line for\ninput x-points in a list and y-points in a list"""
+	import math
+	if (len(xi_list) == len(yi_list)):
+		m,r2 = 0,0
+		xsum = sum(map(lambda x: math.log10(x),xi_list))
+		x2sum = sum(map(lambda x: (math.log10(x))**2,xi_list))
+		xysum = sum(map(lambda x,y: math.log10(x)*math.log10(y),xi_list,yi_list))
+		ysum = sum(map(lambda y: math.log10(y),yi_list))
+		y2sum = sum(map(lambda y: math.log10(y)**2,yi_list))
+		m = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))))
+		b = float((float(ysum) - (float(m) * float(xsum)))/(len(xi_list)))
+		r2 = float((((len(xi_list) * float(xysum)) - (float(xsum) * float(ysum)))/((((len(xi_list) * float(x2sum)) - (float(xsum) * float(xsum)))**.5) * (((len(xi_list) * float(y2sum)) - (float(ysum) * float(ysum)))**.5)))**2)
+		print " "
+		print "sum of Xi = " + str(xsum) + "\nsum of Yi = " + str(ysum) + "\nsum of XiYi = " + str(xysum) + "\nsum of X2i = " + str(x2sum) + "\nsum of Y2i = " + str(y2sum)
+		print " m = " + str(m)
+		print " b = " + str((10**b))
+		print " r2 = " + str(r2)
+		print " r = " + str((float(r2))**.5)
+		print "y = " + str((10**b)) + "(x)^" + str(m)
+	else:
+		print "there was an unequal number of list elements in x list and the y list"
+
 def data(list):
 	"""This is for large statisical data gathering through one input list"""
 	import math
