@@ -7,29 +7,21 @@ def quad(a,b,c):
 	x2 = (-b - ((b**2) - (4 * a * c))**.5)/(2 * a)
 	print "your solutions are " + str(x1) + " and " + str(x2)
 
-def factor(num):
-	"""Easy factoring of numbers, not made to be a key breaker"""
-	import math
-	l = []
-	if (num%2 == 0):
-		i = 2
-		while(i <= num/2):
-			if (num%i == 0):
-				l.append(str(i) + "*" + str(num/i))
-				#break right here will give only the first factors for num(even)
-			if ((i-1) > (num/i)):
-				break
-			i += 1
-	else:
-		i = 3
-		while(i <= num/2):
-			if (num%i == 0):
-				l.append(str(i) + "*" + str(num/i))
-				#break right here will give only the first factors for num(odd)
-			if ((i-1) > (num/i)):
-				break
-			i += 2
-	return l
+def dot(list1,list2):
+     total = []
+     for i in range(0,len(list1)):
+             total.append(list1[i]*list2[i])
+     sum = 0
+     for j in range(0,len(total)):
+             sum += total[j]
+     return sum
+
+def cross_producct(vector1,vector2):
+     i = vector1[1]*vector2[2] - vector1[2]*vector2[1]
+     j = vector1[2]*vector2[0] - vector1[0]*vector2[2]
+     k = vector1[0]*vector2[1] - vector1[1]*vector2[0]
+     return [i,j,k]
+
 
 def linear_regression(xi_list,yi_list):
 	"""this function does easy sums to help simplify work for linear regression\ninput x-points in a list and y-points in a list"""
